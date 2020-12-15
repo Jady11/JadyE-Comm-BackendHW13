@@ -14,11 +14,7 @@ Tag.init(
       autoIncrement: true
     },
     tag_name: {
-      type: DataTypes.STRING,
-      references: {
-        model: 'tag',
-        key: 'id'
-      }
+      type: DataTypes.STRING
     }
   },
   {

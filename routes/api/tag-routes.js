@@ -7,10 +7,10 @@ router.get('/', async (req, res) => {
   // find all tags
   // be sure to include its associated Product data
   try {
-    const productData = await Product.findAll({
-      inclide: [{ model: Product }],
+    const tagData = await Tag.findAll({
+      include: [{ model: Product }],
     });
-    res.status(200).json(locationData);
+    res.status(200).json(tagData);
   }catch (err) {
     res.status(500).json(err);
   }
@@ -67,14 +67,14 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   // delete on tag by its `id` value
   try {
-    const tagData = await tagData.destroy({
+    const tagData = await Tag.destroy({
       where: {
         id: req.params.id 
       }
     });
 
     if (!tagData) {
-      res.status(404).json({ message: 'No Tag with this id! '});
+      res.status(404).json({ message: 'No Tag with this id!' });
       return;
     }
 
